@@ -12,12 +12,14 @@ export default {
 		},
 		colors: {
 			primary: {
-				light: colors.lime[100],
-				DEFAULT: colors.yellow[500],
+				DEFAULT: colors.amber[500],
+				light: colors.amber[100],
 			},
-			text: {
-				light: colors.slate[500],
+			ink: {
 				DEFAULT: colors.slate[900],
+				light: colors.slate[500],
+				lighter: colors.slate[300],
+				lightest: colors.slate[200],
 				negative: colors.slate[50],
 			},
 		},

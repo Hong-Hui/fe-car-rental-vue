@@ -8,7 +8,7 @@
 <template>
 	<a
 		:href="href"
-		class="text-sm font-semibold tracking-wide capitalize duration-300 ease-in-out hover:text-primary text-text"
+		class="text-sm font-semibold tracking-wide capitalize duration-300 ease-in-out hover:text-primary text-ink"
 		>{{ html }}</a
 	>
 </template>
