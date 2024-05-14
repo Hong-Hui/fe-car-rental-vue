@@ -12,8 +12,8 @@ export default {
 		},
 		colors: {
 			primary: {
-				DEFAULT: colors.amber[500],
-				light: colors.amber[100],
+				DEFAULT: colors.yellow[500],
+				light: colors.yellow[100],
 			},
 			ink: {
 				DEFAULT: colors.slate[900],
