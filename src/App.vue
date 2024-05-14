@@ -176,7 +176,7 @@
 						href="#" />
 					<CTALink
 						href="#"
-						:class="twJoin('bg-primary')"
+						:className="twJoin('bg-primary')"
 						>register</CTALink
 					>
 				</div>
@@ -200,16 +200,14 @@
 					<div class="flex flex-row items-center gap-5 mt-5">
 						<CTALink
 							href="#"
-							:class="twJoin('bg-primary')">
+							:className="twJoin('bg-primary')">
 							<span class="ml-2">Book Ride</span>
 							<CheckCircleIcon
 								aria-hidden="true"
 								class="ml-2 size-5" />
 						</CTALink>
 
-						<CTALink
-							href="#"
-							class="">
+						<CTALink href="#">
 							<span class="ml-2">Learn More</span>
 							<ChevronRightIcon
 								aria-hidden="true"
@@ -343,7 +341,7 @@
 
 					<CTALink
 						href="#"
-						:class="twMerge('bg-primary px-20 mb-1 rounded-md')">
+						:className="twMerge('bg-primary px-20 mb-1 rounded-md')">
 						<span>Search</span>
 						<MagnifyingGlassIcon
 							class="size-5 ml-2.5"
@@ -409,14 +407,14 @@
 			<p class="max-w-md mx-auto mt-10 text-center text-ink-light">
 				To contribute to positive change and achieve our sustainability goals with many extraordinary.
 			</p>
-			<ul class="flex flex-row items-center justify-center max-w-5xl gap-5 mx-auto mt-10">
+			<ul class="flex flex-row items-center justify-center max-w-6xl gap-5 mx-auto mt-10">
 				<li
 					v-for="option in carModelOptions"
 					:key="option.id">
 					<Button
 						@click="selectedCarOption = option"
 						type="button"
-						:class="option.id == selectedCarOption.id ? twMerge('bg-primary') : ''"
+						:className="['py-5 px-10', option.id == selectedCarOption.id ? twMerge('bg-primary') : '']"
 						>{{ option.name }}</Button
 					>
 				</li>
