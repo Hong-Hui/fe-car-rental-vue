@@ -18,18 +18,6 @@
 
 	import Sales from './assets/sales.jpg';
 
-	type Link = {
-		id: number;
-		href: string;
-		html: string;
-	};
-
-	type Option = {
-		id: number;
-		name: string;
-		value: string;
-	};
-
 	const navLinks: Link[] = [
 		{ id: 1, href: '#', html: 'models' },
 		{ id: 2, href: '#', html: 'about' },
@@ -434,10 +422,10 @@
 					>
 				</li>
 			</ul>
-			<div class="flex flex-row items-center gap-5 h-[600px] justify-evenly">
+			<div class="flex flex-row items-center gap-5 justify-center h-[600px]">
 				<!-- /* -------------------------------- car image ------------------------------- */ -->
 
-				<div class="flex items-center justify-center max-w-3xl p-5 size-full">
+				<div class="flex items-center justify-center max-w-2xl p-5 size-full">
 					<img
 						:src="selectedCarOption.image"
 						:alt="selectedCarOption.name"
@@ -447,7 +435,7 @@
 				<!-- /* ------------------------------- car details ------------------------------ */ -->
 
 				<div class="flex flex-col items-center justify-center max-w-xl p-5 size-full">
-					<div class="flex flex-col gap-5">
+					<div class="flex flex-col gap-2.5">
 						<div class="text-5xl font-bold">
 							<span class="text-4xl">$</span>{{ selectedCarOption.rentPrice }} <span class="text-xl align-sub">/ Day</span>
 						</div>
@@ -508,7 +496,7 @@
 
 					<!-- /* ----------------------------------- CTA ---------------------------------- */ -->
 
-					<div class="flex flex-row gap-5 mt-10">
+					<div class="flex flex-row gap-5 mt-16">
 						<CTALink :className="twMerge('bg-primary')"
 							><span>Book a Ride</span
 							><Icon
@@ -531,10 +519,10 @@
 		<!-- /* ------------------------------ about section ----------------------------- */ -->
 
 		<section class="mx-auto container mt-[150px]">
-			<div class="flex flex-row gap-5 justify-evenly">
+			<div class="flex flex-row justify-center gap-[100px]">
 				<!-- /* ---------------------------------- image --------------------------------- */ -->
 
-				<div class="relative max-w-sm mb-auto">
+				<div class="relative max-w-md p-5 mb-auto">
 					<img
 						:src="Sales"
 						alt="sales"
@@ -542,7 +530,7 @@
 
 					<!-- /* ------------------------------- play button ------------------------------ */ -->
 
-					<Button :className="twMerge('absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 bg-primary size-28')">
+					<Button :className="twMerge('absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 bg-primary size-28')">
 						<Icon
 							icon="heroicons:play-solid"
 							aria-hidden="true"
@@ -552,7 +540,7 @@
 
 				<!-- /* ------------------------------- description ------------------------------ */ -->
 
-				<div class="max-w-lg">
+				<div class="max-w-xl p-5">
 					<header>
 						<h3 class="text-xl capitalize">About the Company</h3>
 						<h2 class="text-4xl font-extrabold capitalize">
@@ -561,7 +549,7 @@
 						</h2>
 					</header>
 
-					<p class="max-w-md mt-10 leading-relaxed text-ink-light">
+					<p class="mt-10 leading-relaxed text-ink-light">
 						Certain but she but shyness why cottage. Guy the put instrument sir entreaties affronting. Pretended exquisite see cordially the you.
 						Weeks quiet do vexed or whose. Motionless if no to affronting imprudence no precaution. My indulged as disposal strongly attended.
 					</p>
@@ -581,6 +569,7 @@
 								<div class="font-semibold whitespace-wrap text-ink-light">Car Types</div>
 							</div>
 						</div>
+						<div class="text-ink-lightest">|</div>
 						<div class="flex flex-col gap-5">
 							<Icon
 								icon="maki:building"
@@ -591,6 +580,7 @@
 								<div class="font-semibold whitespace-wrap text-ink-light">Rental Outlets</div>
 							</div>
 						</div>
+						<div class="text-ink-lightest">|</div>
 						<div class="flex flex-col gap-5">
 							<Icon
 								icon="maki:car-repair"
@@ -605,5 +595,93 @@
 				</div>
 			</div>
 		</section>
+
+		<footer class="mx-auto container mt-[150px] mb-[100px] px-10">
+			<div class="grid grid-cols-4 gap-10 place-items-center">
+				<!-- /* ---------------------------------- footer: main ---------------------------------- */ -->
+
+				<div class="flex flex-col h-full gap-5">
+					<div class="text-2xl font-black">Turbo<span class="text-primary">R</span>entals</div>
+					<p class="mt-5 text-balance">Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion.</p>
+					<div>
+						<div class="flex flex-row gap-2.5 items-center py-2.5">
+							<Icon
+								icon="heroicons:phone-solid"
+								aria-hidden="true"
+								class="size-5" />
+							<span class="font-medium cursor-pointer hover:underline">(212) 498-3400</span>
+						</div>
+						<div class="flex flex-row gap-2.5 items-center py-2.5">
+							<Icon
+								icon="heroicons:envelope-solid"
+								aria-hidden="true"
+								class="size-5" />
+							<span class="font-medium cursor-pointer hover:underline">example@email.com</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- /* ----------------------------- footer: company ---------------------------- */ -->
+
+				<div class="flex flex-col h-full gap-5">
+					<div class="text-2xl font-extrabold uppercase">Company</div>
+					<ul class="mt-5 flex flex-col gap-2.5">
+						<li>
+							<a
+								href="#"
+								class="text-lg hover:underline"
+								>Paris</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="text-lg hover:underline"
+								>New York</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="text-lg hover:underline"
+								>Tokyo</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="text-lg hover:underline"
+								>Buenos Aires</a
+							>
+						</li>
+					</ul>
+				</div>
+
+				<!-- /* -------------------------- footer: working hours ------------------------- */ -->
+
+				<div class="flex flex-col h-full gap-5">
+					<div class="text-2xl font-extrabold uppercase">Working Hours</div>
+					<ul class="flex flex-col gap-5 mt-5">
+						<li><span class="text-ink-light">Mon - Fri:</span> 09:00AM - 09:00PM</li>
+						<li><span class="text-ink-light">Sat:</span> 09:00AM - 07:00PM</li>
+						<li><span class="text-ink-light">Sun:</span> Closed</li>
+					</ul>
+				</div>
+
+				<!-- /* -------------------------- footer: subscriptions ------------------------- */ -->
+
+				<div class="flex flex-col h-full gap-5">
+					<div class="text-2xl font-extrabold uppercase">Subscriptions</div>
+					<p class="mt-5 text-ink-light">Subscribe your Email address for latest news & updates.</p>
+					<BoxWrapper :class="twJoin('mt-5')">
+						<input
+							type="text"
+							class="w-full bg-ink-negative py-4 px-2.5 text-sm text-center tracking-5 border-none rounded-lg text-ink focus:ring-0 outline-primary"
+							placeholder="Enter your Email" />
+					</BoxWrapper>
+					<Button :className="twMerge('bg-primary')">Send</Button>
+				</div>
+			</div>
+		</footer>
 	</div>
 </template>

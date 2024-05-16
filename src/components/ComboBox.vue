@@ -1,14 +1,8 @@
 <script setup lang="ts">
 	import { ref, computed } from 'vue';
 	import { Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, TransitionRoot } from '@headlessui/vue';
-	import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
+	import { Icon } from '@iconify/vue';
 	import BoxWrapper from './BoxWrapper.vue';
-
-	type Option = {
-		id: number;
-		name: string;
-		value: string;
-	};
 
 	const props = defineProps<{
 		options: Array<Option>;
@@ -33,9 +27,9 @@
 					:displayValue="(option) => option.name"
 					@change="query = $event.target.value" />
 				<ComboboxButton class="absolute inset-y-0 right-0 flex items-center pr-2">
-					<ChevronUpDownIcon
-						class="text-ink-light size-5"
-						aria-hidden="true" />
+					<Icon
+						icon="heroicons:chevron-up-down-20-solid"
+						class="size-5 text-ink-light" />
 				</ComboboxButton>
 			</BoxWrapper>
 			<TransitionRoot
@@ -72,8 +66,9 @@
 								v-if="selected"
 								class="absolute inset-y-0 left-0 flex items-center pl-3"
 								:class="{ 'text-ink-negative': active, 'text-primary': !active }">
-								<CheckIcon
-									class="w-5 h-5"
+								<Icon
+									icon="heroicons:check-20-solid"
+									class="size-5 shrink-0"
 									aria-hidden="true" />
 							</span>
 						</li>

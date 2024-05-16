@@ -12,9 +12,9 @@ export default {
 		},
 		colors: {
 			primary: {
-				dark: colors.yellow[500],
-				DEFAULT: colors.yellow[400],
-				light: colors.green[200],
+				dark: colors.amber[500],
+				DEFAULT: colors.amber[400],
+				light: colors.amber[200],
 			},
 			ink: {
 				DEFAULT: colors.slate[900],
