@@ -1,8 +1,7 @@
 <script setup lang="ts">
 	import { ref } from 'vue';
 	import { twMerge, twJoin } from 'tailwind-merge';
-	import { BriefcaseIcon, CalendarDaysIcon, CheckCircleIcon, ChevronRightIcon, MagnifyingGlassIcon, MapPinIcon } from '@heroicons/vue/20/solid';
-	import { ClipboardDocumentCheckIcon, CursorArrowRaysIcon, GlobeEuropeAfricaIcon } from '@heroicons/vue/24/outline';
+	import { Icon } from '@iconify/vue';
 
 	import CTALink from './components/CTALink.vue';
 	import NavLink from './components/NavLink.vue';
@@ -10,12 +9,14 @@
 	import BoxWrapper from './components/BoxWrapper.vue';
 	import Button from './components/Button.vue';
 
-	import Car1 from './assets/car-png-1234.png';
-	import Car2 from './assets/car-png-7533.png';
-	import Car3 from './assets/car-png-black.png';
-	import Car4 from './assets/car-png-blue.png';
-	import Car5 from './assets/car-png-red.png';
-	import Car6 from './assets/car-png-yellow.png';
+	import Car1 from './assets/SUV1.png';
+	import Car2 from './assets/SUV2.png';
+	import Car3 from './assets/SUV3.png';
+	import Car4 from './assets/SUV4.png';
+	import Car5 from './assets/SUV5.png';
+	import Car6 from './assets/SUV6.png';
+
+	import Sales from './assets/sales.jpg';
 
 	type Link = {
 		id: number;
@@ -191,25 +192,29 @@
 
 				<div class="flex flex-col w-full max-w-lg gap-5 p-5 pl-16">
 					<header>
-						<h2 class="text-xl capitalize">Plan your trip now</h2>
+						<h3 class="text-xl capitalize">Plan your trip now</h3>
 						<h1 class="text-4xl font-extrabold capitalize">Save <span class="text-primary">Big</span> with our car rental</h1>
 					</header>
 
-					<p class="text-ink-light text-balance">To contribute to positive change and achieve our sustainability goals with many extraordinary</p>
+					<p class="leading-relaxed text-ink-light text-balance">
+						To contribute to positive change and achieve our sustainability goals with many extraordinary
+					</p>
 
 					<div class="flex flex-row items-center gap-5 mt-5">
 						<CTALink
 							href="#"
 							:className="twJoin('bg-primary')">
 							<span class="ml-2">Book Ride</span>
-							<CheckCircleIcon
+							<Icon
+								icon="heroicons:check-circle-16-solid"
 								aria-hidden="true"
 								class="ml-2 size-5" />
 						</CTALink>
 
 						<CTALink href="#">
 							<span class="ml-2">Learn More</span>
-							<ChevronRightIcon
+							<Icon
+								icon="heroicons:chevron-right-16-solid"
 								aria-hidden="true"
 								class="ml-2 size-5" />
 						</CTALink>
@@ -221,9 +226,9 @@
 				<div class="w-full max-w-3xl p-5">
 					<div class="shrink-0 size-full">
 						<img
-							src="./assets/car-png-1234.png"
+							:src="Car6"
 							class="object-cover size-full"
-							alt="yellow Audi car" />
+							alt="SUV car" />
 					</div>
 				</div>
 			</div>
@@ -235,9 +240,10 @@
 				<div class="flex flex-row justify-between gap-5 mt-5">
 					<div class="flex flex-col w-full gap-5 mt-5">
 						<div class="flex flex-row gap-2.5 items-center ml-2.5">
-							<BriefcaseIcon
+							<Icon
+								icon="heroicons:swatch-16-solid"
 								aria-hidden="true"
-								class="size-5 text-primary" />
+								class="size-6 text-primary-dark" />
 							<label
 								class="text-sm font-semibold leading-5"
 								for="test1"
@@ -248,9 +254,10 @@
 					</div>
 					<div class="flex flex-col w-full gap-5 mt-5">
 						<div class="flex flex-row gap-2.5 items-center ml-2.5">
-							<MapPinIcon
+							<Icon
+								icon="heroicons:map-pin-16-solid"
 								aria-hidden="true"
-								class="size-5 text-primary" />
+								class="size-6 text-primary-dark" />
 							<label
 								class="text-sm font-semibold leading-5"
 								for="test1"
@@ -261,9 +268,10 @@
 					</div>
 					<div class="flex flex-col w-full gap-5 mt-5">
 						<div class="flex flex-row gap-2.5 items-center ml-2.5">
-							<MapPinIcon
+							<Icon
+								icon="heroicons:map-pin-16-solid"
 								aria-hidden="true"
-								class="size-5 text-primary" />
+								class="size-6 text-primary-dark" />
 							<label
 								class="text-sm font-semibold leading-5"
 								for="test1"
@@ -279,9 +287,10 @@
 					<div class="flex flex-row items-end w-full gap-5 mt-5">
 						<div class="flex flex-col w-full gap-5">
 							<div class="flex flex-row gap-2.5 items-center ml-2.5">
-								<CalendarDaysIcon
+								<Icon
+									icon="heroicons:calendar-days-16-solid"
 									aria-hidden="true"
-									class="size-5 text-primary" />
+									class="size-6 text-primary-dark" />
 								<label
 									class="text-sm font-semibold leading-5"
 									for="test1"
@@ -311,9 +320,10 @@
 					<div class="flex flex-row items-end w-full gap-5 mt-5">
 						<div class="flex flex-col w-full gap-5">
 							<div class="flex flex-row gap-2.5 items-center ml-2.5">
-								<CalendarDaysIcon
+								<Icon
+									icon="heroicons:calendar-days-16-solid"
 									aria-hidden="true"
-									class="size-5 text-primary" />
+									class="size-6 text-primary-dark" />
 								<label
 									class="text-sm font-semibold leading-5"
 									for="test1"
@@ -343,9 +353,10 @@
 						href="#"
 						:className="twMerge('bg-primary px-20 mb-1 rounded-md')">
 						<span>Search</span>
-						<MagnifyingGlassIcon
-							class="size-5 ml-2.5"
-							aria-hidden="true" />
+						<Icon
+							icon="heroicons:magnifying-glass-16-solid"
+							aria-hidden="true"
+							class="size-5 ml-2.5" />
 					</CTALink>
 				</div>
 			</div>
@@ -358,12 +369,14 @@
 				<h3 class="text-xl font-bold text-center capitalize">Plan your trip now</h3>
 				<h2 class="mt-5 text-4xl font-extrabold text-center capitalize">Quick & easy car rental</h2>
 			</header>
+
 			<div class="flex flex-row items-center justify-center mt-[100px]">
 				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
-						<CursorArrowRaysIcon
-							class="size-14"
-							aria-hidden="true" />
+						<Icon
+							icon="heroicons:cursor-arrow-rays"
+							aria-hidden="true"
+							class="size-14" />
 					</div>
 					<div class="text-xl font-bold text-center">Select Car</div>
 					<p class="text-sm leading-5 text-center text-ink-light text-balance">
@@ -373,9 +386,10 @@
 				<div>----------</div>
 				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
-						<ClipboardDocumentCheckIcon
-							class="size-14"
-							aria-hidden="true" />
+						<Icon
+							icon="heroicons:clipboard-document-check"
+							aria-hidden="true"
+							class="size-14" />
 					</div>
 					<div class="text-xl font-bold text-center">Contact Operator</div>
 					<p class="text-sm leading-5 text-center text-ink-light text-balance">
@@ -385,9 +399,10 @@
 				<div>----------</div>
 				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
-						<GlobeEuropeAfricaIcon
-							class="size-14"
-							aria-hidden="true" />
+						<Icon
+							icon="heroicons:globe-europe-africa"
+							aria-hidden="true"
+							class="size-14" />
 					</div>
 					<div class="text-xl font-bold text-center">Let's Drive</div>
 					<p class="leading-5 text-center s text-ink-light text-balance">
@@ -431,59 +446,161 @@
 
 				<!-- /* ------------------------------- car details ------------------------------ */ -->
 
-				<div class="flex items-center justify-center max-w-xl p-5 size-full">
+				<div class="flex flex-col items-center justify-center max-w-xl p-5 size-full">
 					<div class="flex flex-col gap-5">
-						<h2 class="text-5xl font-bold">
+						<div class="text-5xl font-bold">
 							<span class="text-4xl">$</span>{{ selectedCarOption.rentPrice }} <span class="text-xl align-sub">/ Day</span>
-						</h2>
-						<div class="w-full h-[1px] bg-ink-light" />
+						</div>
+						<div class="w-full h-px bg-ink-light" />
 						<ul class="flex flex-col gap-5 mt-5">
 							<li>
 								<div class="flex flex-row items-center gap-2.5">
-									<MapPinIcon
-										class="size-5"
-										aria-hidden="true" />
+									<Icon
+										icon="heroicons:swatch-solid"
+										aria-hidden="true"
+										class="size-6 text-ink-light" />
 									<span class="text-ink-light">Model :</span>
 									<span class="text-ink-light">{{ selectedCarOption.details.model }}</span>
 								</div>
 							</li>
 							<li>
 								<div class="flex flex-row items-center gap-2.5">
-									<MapPinIcon
-										class="size-5"
-										aria-hidden="true" />
+									<Icon
+										icon="heroicons:swatch-solid"
+										aria-hidden="true"
+										class="size-6 text-ink-light" />
 									<span class="text-ink-light">Doors :</span>
 									<span class="text-ink-light">{{ selectedCarOption.details.doors }}</span>
 								</div>
 							</li>
 							<li>
 								<div class="flex flex-row items-center gap-2.5">
-									<MapPinIcon
-										class="size-5"
-										aria-hidden="true" />
+									<Icon
+										icon="heroicons:swatch-solid"
+										aria-hidden="true"
+										class="size-6 text-ink-light" />
 									<span class="text-ink-light">Seats :</span>
 									<span class="text-ink-light">{{ selectedCarOption.details.seats }}</span>
 								</div>
 							</li>
 							<li>
 								<div class="flex flex-row items-center gap-2.5">
-									<MapPinIcon
-										class="size-5"
-										aria-hidden="true" />
+									<Icon
+										icon="heroicons:swatch-solid"
+										aria-hidden="true"
+										class="size-6 text-ink-light" />
 									<span class="text-ink-light">Luggage :</span>
 									<span class="text-ink-light">{{ selectedCarOption.details.luggage }}</span>
 								</div>
 							</li>
 							<li>
 								<div class="flex flex-row items-center gap-2.5">
-									<MapPinIcon
-										class="size-5"
-										aria-hidden="true" />
+									<Icon
+										icon="heroicons:swatch-solid"
+										aria-hidden="true"
+										class="size-6 text-ink-light" />
 									<span class="text-ink-light">Transmission :</span>
 									<span class="text-ink-light">{{ selectedCarOption.details.transmission }}</span>
 								</div>
 							</li>
 						</ul>
+					</div>
+
+					<!-- /* ----------------------------------- CTA ---------------------------------- */ -->
+
+					<div class="flex flex-row gap-5 mt-10">
+						<CTALink :className="twMerge('bg-primary')"
+							><span>Book a Ride</span
+							><Icon
+								icon="heroicons:check-circle-16-solid"
+								aria-hidden="true"
+								class="ml-2 size-5"
+						/></CTALink>
+						<div class="flex flex-row gap-2.5 items-center py-2.5 px-5">
+							<Icon
+								icon="heroicons:phone-solid"
+								aria-hidden="true"
+								class="size-6" />
+							<span class="font-bold cursor-pointer hover:underline">(212) 498-3400</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- /* ------------------------------ about section ----------------------------- */ -->
+
+		<section class="mx-auto container mt-[150px]">
+			<div class="flex flex-row gap-5 justify-evenly">
+				<!-- /* ---------------------------------- image --------------------------------- */ -->
+
+				<div class="relative max-w-sm mb-auto">
+					<img
+						:src="Sales"
+						alt="sales"
+						class="object-cover size-full" />
+
+					<!-- /* ------------------------------- play button ------------------------------ */ -->
+
+					<Button :className="twMerge('absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 bg-primary size-28')">
+						<Icon
+							icon="heroicons:play-solid"
+							aria-hidden="true"
+							class="size-10 shrink-0" />
+					</Button>
+				</div>
+
+				<!-- /* ------------------------------- description ------------------------------ */ -->
+
+				<div class="max-w-lg">
+					<header>
+						<h3 class="text-xl capitalize">About the Company</h3>
+						<h2 class="text-4xl font-extrabold capitalize">
+							You <span class="text-primary">start</span> the engine<br />
+							and your adventure begins
+						</h2>
+					</header>
+
+					<p class="max-w-md mt-10 leading-relaxed text-ink-light">
+						Certain but she but shyness why cottage. Guy the put instrument sir entreaties affronting. Pretended exquisite see cordially the you.
+						Weeks quiet do vexed or whose. Motionless if no to affronting imprudence no precaution. My indulged as disposal strongly attended.
+					</p>
+
+					<div class="w-full h-px mt-5 bg-ink-lightest" />
+
+					<!-- /* ----------------------------- company metrics ---------------------------- */ -->
+
+					<div class="flex flex-row items-center justify-between gap-5 mt-10">
+						<div class="flex flex-col gap-5">
+							<Icon
+								icon="maki:car"
+								aria-hidden="true"
+								class="size-12 text-primary-dark" />
+							<div class="flex flex-row items-center gap-5">
+								<div class="text-5xl font-semibold">20</div>
+								<div class="font-semibold whitespace-wrap text-ink-light">Car Types</div>
+							</div>
+						</div>
+						<div class="flex flex-col gap-5">
+							<Icon
+								icon="maki:building"
+								aria-hidden="true"
+								class="size-12 text-primary-dark" />
+							<div class="flex flex-row items-center gap-5">
+								<div class="text-5xl font-semibold">85</div>
+								<div class="font-semibold whitespace-wrap text-ink-light">Rental Outlets</div>
+							</div>
+						</div>
+						<div class="flex flex-col gap-5">
+							<Icon
+								icon="maki:car-repair"
+								aria-hidden="true"
+								class="size-12 text-primary-dark" />
+							<div class="flex flex-row items-center gap-5">
+								<div class="text-5xl font-semibold">75</div>
+								<div class="font-semibold whitespace-wrap text-ink-light">Repair Shop</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
