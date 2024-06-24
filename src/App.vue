@@ -1,7 +1,11 @@
 <script setup lang="ts">
-	import { ref } from 'vue';
+	import { onMounted, ref } from 'vue';
 	import { twMerge, twJoin } from 'tailwind-merge';
 	import { Icon } from '@iconify/vue';
+	import gsap from 'gsap';
+	import ScrollTrigger from 'gsap/ScrollTrigger';
+
+	/* ------------------------------- components ------------------------------- */
 
 	import CTALink from './components/CTALink.vue';
 	import NavLink from './components/NavLink.vue';
@@ -9,20 +13,36 @@
 	import BoxWrapper from './components/BoxWrapper.vue';
 	import Button from './components/Button.vue';
 
+	/* ---------------------------- image components ---------------------------- */
+
 	import Car1 from './assets/SUV1.png';
 	import Car2 from './assets/SUV2.png';
 	import Car3 from './assets/SUV3.png';
 	import Car4 from './assets/SUV4.png';
 	import Car5 from './assets/SUV5.png';
 	import Car6 from './assets/SUV6.png';
-
 	import Sales from './assets/sales.jpg';
 
+	/* --------------------------------- ui data -------------------------------- */
+
+	interface Link {
+		id: number;
+		href: string;
+		html: string;
+	}
+
+	interface Option {
+		id: number;
+		name: string;
+		value: string;
+	}
+
 	const navLinks: Link[] = [
-		{ id: 1, href: '#', html: 'models' },
-		{ id: 2, href: '#', html: 'about' },
-		{ id: 3, href: '#', html: 'testimonials' },
-		{ id: 4, href: '#', html: 'contact' },
+		{ id: 1, href: '#', html: 'home' },
+		{ id: 2, href: '#', html: 'models' },
+		{ id: 3, href: '#', html: 'about' },
+		{ id: 4, href: '#', html: 'testimonials' },
+		{ id: 5, href: '#', html: 'contact' },
 	];
 
 	const carModelOptions = [
@@ -133,10 +153,78 @@
 			value: '5',
 		},
 	];
+
+	/* ------------------------------ template refs ----------------------------- */
+
+	const heroSection = ref(null);
+	const heroImage = ref(null);
+	const heroTitle = ref(null);
+	const selectionForm = ref(null);
+
+	const stepsSection = ref(null);
+	const step1 = ref(null);
+	const step2 = ref(null);
+	const step3 = ref(null);
+
+	const vehicleModelsSection = ref(null);
+	const vehicleModelImage = ref(null);
+	const vehicleModelDetails = ref(null);
+
+	const aboutSection = ref(null);
+	const aboutText = ref(null);
+
+	/* ------------------------------ gsap animations ----------------------------- */
+
+	//FIXME - use one function for all animations
+	const riseUpAnimation = (element: HTMLElement | null) => {
+		return {
+			scrollTrigger: element,
+			opacity: 0,
+			y: 100,
+			duration: 1,
+			ease: 'power1.inOut',
+		};
+	};
+
+	const rightFadeAnimation = (element: HTMLElement | null) => {
+		return {
+			scrollTrigger: element,
+			opacity: 0,
+			x: 100,
+			duration: 1,
+			ease: 'power1.inOut',
+		};
+	};
+
+	const leftFadeAnimation = (element: HTMLElement | null) => {
+		return {
+			scrollTrigger: element,
+			opacity: 0,
+			x: -100,
+			duration: 1,
+			ease: 'power1.inOut',
+		};
+	};
+
+	onMounted(() => {
+		gsap.registerPlugin(ScrollTrigger);
+
+		gsap.from(heroTitle.value, leftFadeAnimation(heroTitle.value));
+		gsap.from(heroImage.value, rightFadeAnimation(heroImage.value));
+		gsap.from(selectionForm.value, riseUpAnimation(selectionForm.value));
+		gsap.from(stepsSection.value, riseUpAnimation(stepsSection.value));
+		gsap.from(step1.value, { opacity: 0, y: 100, duration: 1, delay: 0.5, ease: 'power1.inOut' });
+		gsap.from(step2.value, { opacity: 0, y: 100, duration: 1, delay: 1, ease: 'power1.inOut' });
+		gsap.from(step3.value, { opacity: 0, y: 100, duration: 1, delay: 1.5, ease: 'power1.inOut' });
+		gsap.from(vehicleModelsSection.value, riseUpAnimation(vehicleModelsSection.value));
+		gsap.from(vehicleModelImage.value, leftFadeAnimation(vehicleModelImage.value));
+		gsap.from(vehicleModelDetails.value, rightFadeAnimation(vehicleModelDetails.value));
+		gsap.from(aboutText.value, riseUpAnimation(aboutText.value));
+	});
 </script>
 
 <template>
-	<div class="text-ink">
+	<div class="overflow-hidden text-ink">
 		<!-- /* ------------------------------- navigation ------------------------------- */ -->
 
 		<nav class="container mx-auto">
@@ -146,7 +234,6 @@
 				<!-- /* ---------------------------- navigation links ---------------------------- */ -->
 
 				<ul class="flex flex-row gap-5">
-					<li>Home</li>
 					<li
 						v-for="navLink in navLinks"
 						:key="navLink.id">
@@ -174,11 +261,15 @@
 
 		<!-- /* ------------------------------ hero section ------------------------------ */ -->
 
-		<section class="container mx-auto">
+		<section
+			ref="heroSection"
+			class="container mx-auto">
 			<div class="flex flex-row items-center gap-5 p-5 justify-evenly h-[600px] w-full">
 				<!-- /* ------------------------------ title and cta ----------------------------- */ -->
 
-				<div class="flex flex-col w-full max-w-lg gap-5 p-5 pl-16">
+				<div
+					ref="heroTitle"
+					class="flex flex-col w-full max-w-lg gap-5 p-5 pl-16">
 					<header>
 						<h3 class="text-xl capitalize">Plan your trip now</h3>
 						<h1 class="text-4xl font-extrabold capitalize">Save <span class="text-primary">Big</span> with our car rental</h1>
@@ -211,7 +302,9 @@
 
 				<!-- /* ---------------------------------- image --------------------------------- */ -->
 
-				<div class="w-full max-w-3xl p-5">
+				<div
+					ref="heroImage"
+					class="w-full max-w-3xl p-5">
 					<div class="shrink-0 size-full">
 						<img
 							:src="Car6"
@@ -223,7 +316,9 @@
 
 			<!-- /* ----------------------------- selection form ----------------------------- */ -->
 
-			<div class="flex flex-col p-10 border shadow-md rounded-xl border-ink-lightest">
+			<div
+				ref="selectionForm"
+				class="flex flex-col p-10 border shadow-md rounded-xl border-ink-lightest">
 				<h4 class="text-3xl font-bold">Book a car</h4>
 				<div class="flex flex-row justify-between gap-5 mt-5">
 					<div class="flex flex-col w-full gap-5 mt-5">
@@ -272,6 +367,7 @@
 
 				<div class="flex flex-row items-end justify-between gap-5 mt-5">
 					<!-- /* --------------------------------- pickup -------------------------------- */ -->
+
 					<div class="flex flex-row items-end w-full gap-5 mt-5">
 						<div class="flex flex-col w-full gap-5">
 							<div class="flex flex-row gap-2.5 items-center ml-2.5">
@@ -352,14 +448,18 @@
 
 		<!-- /* ------------------------------ steps section ----------------------------- */ -->
 
-		<section class="container mx-auto mt-[150px]">
+		<section
+			ref="stepsSection"
+			class="container mx-auto mt-[150px]">
 			<header>
 				<h3 class="text-xl font-bold text-center capitalize">Plan your trip now</h3>
 				<h2 class="mt-5 text-4xl font-extrabold text-center capitalize">Quick & easy car rental</h2>
 			</header>
 
 			<div class="flex flex-row items-center justify-center mt-[100px]">
-				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
+				<div
+					ref="step1"
+					class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
 						<Icon
 							icon="heroicons:cursor-arrow-rays"
@@ -372,7 +472,9 @@
 					</p>
 				</div>
 				<div>----------</div>
-				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
+				<div
+					ref="step2"
+					class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
 						<Icon
 							icon="heroicons:clipboard-document-check"
@@ -385,7 +487,9 @@
 					</p>
 				</div>
 				<div>----------</div>
-				<div class="flex flex-col items-center max-w-xs gap-5 p-5">
+				<div
+					ref="step3"
+					class="flex flex-col items-center max-w-xs gap-5 p-5">
 					<div class="flex items-center justify-center p-5 rounded-full bg-primary size-fit">
 						<Icon
 							icon="heroicons:globe-europe-africa"
@@ -402,7 +506,9 @@
 
 		<!-- /* ------------------------- vehicle models section ------------------------- */ -->
 
-		<section class="mx-auto container mt-[150px]">
+		<section
+			ref="vehicleModelsSection"
+			class="mx-auto container mt-[150px]">
 			<header>
 				<h3 class="text-xl font-bold text-center capitalize">Vehicle Models</h3>
 				<h2 class="mt-5 text-4xl font-extrabold text-center capitalize">Our rental fleet</h2>
@@ -423,18 +529,20 @@
 				</li>
 			</ul>
 			<div class="flex flex-row items-center gap-5 justify-center h-[600px]">
-				<!-- /* -------------------------------- car image ------------------------------- */ -->
-
-				<div class="flex items-center justify-center max-w-2xl p-5 size-full">
+				<!-- /* --------------------------- vehicle model image -------------------------- */ -->
+				<div
+					ref="vehicleModelImage"
+					class="flex items-center justify-center max-w-2xl p-5 size-full">
 					<img
 						:src="selectedCarOption.image"
 						:alt="selectedCarOption.name"
 						class="object-contain size-full shrink-0" />
 				</div>
 
-				<!-- /* ------------------------------- car details ------------------------------ */ -->
-
-				<div class="flex flex-col items-center justify-center max-w-xl p-5 size-full">
+				<!-- /* -------------------------- vehicle model details ------------------------- */ -->
+				<div
+					ref="vehiclModelDetails"
+					class="flex flex-col items-center justify-center max-w-xl p-5 size-full">
 					<div class="flex flex-col gap-2.5">
 						<div class="text-5xl font-bold">
 							<span class="text-4xl">$</span>{{ selectedCarOption.rentPrice }} <span class="text-xl align-sub">/ Day</span>
@@ -518,9 +626,11 @@
 
 		<!-- /* ------------------------------ about section ----------------------------- */ -->
 
-		<section class="mx-auto container mt-[150px]">
+		<section
+			ref="aboutSection"
+			class="mx-auto container mt-[150px]">
 			<div class="flex flex-row justify-center gap-[100px]">
-				<!-- /* ---------------------------------- image --------------------------------- */ -->
+				<!-- /* ---------------------------------- about image --------------------------------- */ -->
 
 				<div class="relative max-w-md p-5 mb-auto">
 					<img
@@ -538,9 +648,11 @@
 					</Button>
 				</div>
 
-				<!-- /* ------------------------------- description ------------------------------ */ -->
+				<!-- /* ------------------------------- about text ------------------------------ */ -->
 
-				<div class="max-w-xl p-5">
+				<div
+					ref="aboutText"
+					class="max-w-xl p-5">
 					<header>
 						<h3 class="text-xl capitalize">About the Company</h3>
 						<h2 class="text-4xl font-extrabold capitalize">
